@@ -1,0 +1,116 @@
+@import "shared/mixins";
+
+.navbar {
+  box-shadow: 0 0 20px $maya-blue;
+  -webkit-box-shadow: 0 0 20px $maya-blue;
+  -moz-box-shadow: 0 0 20px $maya-blue;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+
+  @include respond-to('xlarge') { 
+    padding: ($global-padding * 0.7) ($global-padding * 10);
+  };
+
+  @include respond-to('large') { 
+    padding: ($global-padding * 0.7) ($global-padding * 2);
+  };
+}
+
+.navbar__menu-bar {
+  font-size: $global-font * 1.9;
+  font-family: 'Lobster';
+  cursor: pointer;
+}
+
+.navbar__auth {
+  margin-right: $global-margin * 2;
+  font-family: 'Lobster';
+  font-size: $global-font * 1.2;
+}
+
+.navbar__auth-login {
+  color: $azure-blue;
+
+  &:hover {
+    color: $egyptian-blue;
+    text-decoration: none;
+  }
+}
+
+.navbar__auth-signup {
+  color: $hibiscus-red;
+  border: 1px solid $hibiscus-red;
+  border-radius: $global-padding * 0.3;
+  padding: ($global-padding * 0.4) $global-padding;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+    background-color: $hibiscus-red;
+  }
+}
+
+.navbar__brand-text {
+  margin-left: $global-margin * 2;
+  font-size: $global-font * 1.7;
+  color: $hibiscus-red;
+  font-family: 'Lobster';
+
+  &:hover {
+    color: $vermilion-red;
+    text-decoration: none;
+  }
+  &:visited {
+    color: $vermilion-red;
+  }
+}
+
+.navbar__user-name {
+  font-size: $global-font * 1.2;
+  font-family: 'Lobster';
+  font-style: italic;
+  color: $gray1;
+}
+
+.side-bar__container {
+  background: $hibiscus-red;
+  width: 15%;
+  position: fixed;
+  margin-right: 30px;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+  box-shadow: none;
+  height: calc(100vh - 120px);
+  border-radius: $global-padding * 0.2;
+
+  .side-bar__user-details-summary {
+    padding: $global-padding ($global-padding * 1.5);
+    color: $white;
+
+    img {
+      width: 50%;
+      border-radius: 50%;
+    }
+  }
+
+  .side-bar__menu-list-container {
+    ul {
+      li {
+        background-color: $hibiscus-red;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $vermilion-red;
+        }
+      }
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

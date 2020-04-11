@@ -1,0 +1,59 @@
+<nav class="side-bar__container">
+  <div class="side-bar__user-details-summary text-center">
+    <img src="https://robohash.org/superman" alt="user image" class="img-thumbnail">
+    <%= 'john.doe@gmail.com' %>
+  </div>
+  <br>
+  <div class="side-bar__menu-list-container">
+    <ul class="list-group">
+      <%= link_to(root_path) do %>
+        <li class="list-group-item"> 
+          <i class="fa fa-meteor"></i>
+          <span> Dashboard </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-money-bill-alt"></i> 
+          <span> Income </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-money-bill-wave"></i>
+          <span> Expenses </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-book"></i>
+          <span> Documents </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-receipt"></i>
+          <span> Reports </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-setting"></i>
+          <span> Settings </span>
+        </li>
+      <% end %>
+
+      <%= link_to(root_path) do %>
+        <li class="list-group-item">
+          <i class="fa fa-power-off"></i>
+          <span> Logout </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<nav>
