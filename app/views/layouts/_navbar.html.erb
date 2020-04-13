@@ -1,14 +1,14 @@
 <nav class="navbar navbar-light bg-light">
   <div>
     <span class="navbar__menu-bar"> <i class="fa fa-bars"></i> <span>
-    <%= link_to raw('Expense <span> Traka </span>'), root_path, class: 'navbar__brand-text' %>
+    <%= link_to raw('Xpense <span> Traka </span>'), root_path, class: 'navbar__brand-text' %>
   </div>
   <div>
-    <% if false %>
-      <span class="navbar__user-name"> Hello, Emeka! </span>
+    <% if current_user %>
+      <span class="navbar__user-name"> <%= "Hello, #{current_user.first_name}!" %> </span>
     <% else %>
-      <%= link_to('Login', 'liftopia.com', class: 'navbar__auth navbar__auth-login') %>
-      <%= link_to('Sign Up', 'liftopia.com', class: 'navbar__auth navbar__auth-signup') %>
+      <%= link_to('Login', new_user_session_path, class: 'navbar__auth navbar__auth-login') %>
+      <%= link_to('Sign Up', new_user_registration_path, class: 'navbar__auth navbar__auth-signup') %>
     <% end %>
   </div>
 </nav>

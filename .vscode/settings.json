@@ -1,0 +1,4 @@
+{
+  "emmet.includeLanguages": { "erb":"html" },
+  "highlight-matching-tag.enabled":true
+}
