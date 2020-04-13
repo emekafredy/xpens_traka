@@ -1,5 +1,7 @@
 @import "shared/mixins";
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&family=Comic+Neue:wght@300&family=Gotu&family=Open+Sans+Condensed&display=swap');
 
+// HEADER NAVIGATION
 .navbar {
   box-shadow: 0 0 20px $maya-blue;
   -webkit-box-shadow: 0 0 20px $maya-blue;
@@ -39,15 +41,15 @@
 }
 
 .navbar__auth-signup {
-  color: $hibiscus-red;
-  border: 1px solid $hibiscus-red;
+  color: $white;
+  background-color: $hibiscus-red;
   border-radius: $global-padding * 0.3;
   padding: ($global-padding * 0.4) $global-padding;
 
   &:hover {
     color: $white;
     text-decoration: none;
-    background-color: $hibiscus-red;
+    background-color: $vermilion-red;
   }
 }
 
@@ -55,7 +57,7 @@
   margin-left: $global-margin * 2;
   font-size: $global-font * 1.7;
   color: $hibiscus-red;
-  font-family: 'Lobster';
+  font-family: 'Comic Neue';
 
   &:hover {
     color: $vermilion-red;
@@ -73,6 +75,7 @@
   color: $gray1;
 }
 
+// SIDE-BAR NAVIGATION
 .side-bar__container {
   background: $hibiscus-red;
   width: 15%;
@@ -94,6 +97,15 @@
       width: 50%;
       border-radius: 50%;
     }
+
+    .side__bar-user-profile-link-container {
+      margin-top: $global-margin * 0.5;
+
+      a {
+        color: $white;
+        font-style: italic;
+      }
+    }
   }
 
   .side-bar__menu-list-container {
@@ -112,5 +124,75 @@
       color: $white;
       text-decoration: none;
     }
+  }
+}
+
+// AUTHENTICATION
+.auth--container {
+  padding: $global-padding;
+  margin: ($global-margin * 2) 0;
+  box-shadow: 0 0 5px $light-gray1;
+  -webkit-box-shadow: 0 0 5px $light-gray1;
+  -moz-box-shadow: 0 0 5px $light-gray1;
+  border-radius: $global-padding * 0.1;
+
+  .auth--text {
+    margin: ($global-margin * 2) 0 ($global-margin * 5);
+    font-size: $global-font * 2;
+    font-weight: lighter;
+    color: $gray1;
+  }
+
+  .row {
+    margin-bottom: $global-margin * 2;
+  }
+
+  .auth--error-message {
+    color: $hibiscus-red;
+    float: left;
+    font-size: $global-font * 0.9;
+  }
+}
+
+.auth--button {
+  width: 100%;
+  color: $white;
+  background-color: $hibiscus-red;
+
+  &:hover {
+    color: $white;
+    background-color: $vermilion-red;
+  }
+}
+
+.auth--alternative {
+  border-top: 1px solid $gray1;
+  color: $gray1;
+  opacity: 0.75;
+
+  &:after {
+    content: "or";
+    position: relative;
+    top: $global-padding * -0.9;
+    font-size: $global-padding * 1.1;
+    padding: 0 ($global-padding * 0.7);
+    background: white;
+  }
+}
+
+.auth--social-auth-link {
+  box-shadow: 0 0 5px $light-gray1;
+  border-radius: $global-padding * 0.2;
+  width: 100%;
+  padding: $global-padding * 0.6;
+
+  .auth--social-auth-icon {
+    width: $global-padding * 1.8;
+    padding-right: $global-padding * 0.4;
+  }
+
+  span {
+    color: $gray1;
+    font-size: $global-font * 0.8;
   }
 }
