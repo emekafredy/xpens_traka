@@ -1,0 +1,16 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - db/**/*
+    - vendor/**/*
+    - bin/*
+    - tmp/*
+    - node_modules/**/*
+
+Style/Encoding:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: false

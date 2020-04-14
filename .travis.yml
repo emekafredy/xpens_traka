@@ -1,0 +1,16 @@
+language: ruby
+
+services:
+  - postgresql
+
+before_install:
+  - gem install bundler
+
+before_script:
+  — bundle exec rake db:create
+
+script:
+  — bundle exec rspec
+
+after_script:
+  - bundle exec rake coveralls:push
