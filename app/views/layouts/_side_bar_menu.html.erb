@@ -1,57 +1,57 @@
-<nav class="side-bar__container">
-  <div class="side-bar__user-details-summary text-center">
+<nav class="side-bar--container">
+  <div class="side-bar--user-details-summary text-center">
     <img src="https://robohash.org/superman" alt="user image" class="img-thumbnail">
-    <div class="side-bar__user-profile-link-container">
+    <div class="side-bar--user-profile-link-container">
       <%= link_to(current_user.email, root_path) %>
     </div>
   </div>
-  <div class="side-bar__menu-list-container">
+  <div class="side-bar--menu-list-container">
     <ul class="list-group">
       <%= link_to(root_path) do %>
         <li class="list-group-item"> 
-          <%= image_icon('dashboard', 'side-bar__menu-icon') %>
+          <%= image_icon('dashboard', 'side-bar--menu-icon') %>
           <span> Dashboard </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
-          <%= image_icon('income', 'side-bar__menu-icon') %> 
+          <%= image_icon('income', 'side-bar--menu-icon') %> 
           <span> Income </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
-          <%= image_icon('expenses', 'side-bar__menu-icon') %>
+          <%= image_icon('expenses', 'side-bar--menu-icon') %>
           <span> Expenses </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
-          <%= image_icon('document', 'side-bar__menu-icon') %>
+          <%= image_icon('document', 'side-bar--menu-icon') %>
           <span> Documents </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
-          <%= image_icon('report', 'side-bar__menu-icon') %>
+          <%= image_icon('report', 'side-bar--menu-icon') %>
           <span> Reports </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
-          <%= image_icon('settings', 'side-bar__menu-icon') %>
+          <%= image_icon('settings', 'side-bar--menu-icon') %>
           <span> Settings </span>
         </li>
       <% end %>
 
       <%= link_to(destroy_user_session_path, method: :delete) do %>
         <li class="list-group-item">
-          <%= image_icon('power', 'side-bar__menu-icon') %>
+          <%= image_icon('power', 'side-bar--menu-icon') %>
           <span> Logout </span>
         </li>
       <% end %>

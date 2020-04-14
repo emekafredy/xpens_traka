@@ -1,16 +1,16 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar">
   <div>
     <% if current_user %>
-      <span class="navbar__menu-bar"> <i class="fa fa-bars"></i> <span>
+      <span class="navbar--menu-bar"> <i class="fa fa-bars"></i> <span>
     <% end %>
-    <%= link_to raw('Expense Traka'), root_path, class: 'navbar__brand-text' %>
+    <%= link_to raw('Expense Traka'), root_path, class: 'navbar--brand-text' %>
   </div>
   <div>
     <% if current_user %>
-      <span class="navbar__user-name"> <%= "Hello, #{current_user.first_name}!" %> </span>
+      <span class="navbar--user-name"> <%= "Hello, #{current_user.first_name}!" %> </span>
     <% else %>
-      <%= link_to('Login', new_user_session_path, class: 'navbar__auth navbar__auth-login') %>
-      <%= link_to('Sign Up', new_user_registration_path, class: 'navbar__auth navbar__auth-signup') %>
+      <%= link_to('Login', new_user_session_path, class: 'navbar--auth navbar--auth--login') %>
+      <%= link_to('Sign Up', new_user_registration_path, class: 'navbar--auth navbar--auth--signup') %>
     <% end %>
   </div>
 </nav>
