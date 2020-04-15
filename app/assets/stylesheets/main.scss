@@ -205,21 +205,16 @@
   &:hover { color: $green-3; }
 }
 
-// LANDING PAGE
-.landing-page--container {
-  margin-top: $global-margin * 4 !important;
 
-  .landing-page--title {
-    font-size: 30px;
-    margin: 0;
-    font-family: 'Comic Neue';
-  }
+// alert bars
+.alert-notice {
+  color: $green-4;
+  background-color: $green-5;
+  border-color: $green-6;
+}
 
-  .landing-page--subtitle {
-    font-size: $global-font * 2;
-    color: #8198ae;
-    margin: $global-margin;
-    margin-bottom: $global-margin * 10;
-    font-family: 'Rouge Script', cursive; 
-  }
+.alert-alert {
+  color: $red-3;
+  background-color: $red-4;
+  border-color: $red-5;
 }

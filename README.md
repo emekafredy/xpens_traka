@@ -3,13 +3,15 @@
 ## Xpense Traka
 Sample project that enables users capture their income and expenditure records within selected intervals.
 
-
 * Ruby version
   - ruby 2.6.2
   - rails 6.0.2
 
 * System dependencies
   - listed in `Gemfile` and `package.json`
+
+* Demo site
+  - [Xpense-traka](https://xpense-traka.herokuapp.com/) (Development still in progress)
 
 * Set up
   - Make sure you have Ruby, Rails(with the versions above) and PostgresQL installed in your machine.

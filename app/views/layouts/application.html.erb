@@ -18,6 +18,15 @@
         </div>
       <% end %>
       <div class="<%= current_user ? 'col-9' : 'col-12' %>">
+        <% flash.each do |type, msg| %>
+          <div class="alert <%= "alert-#{type}" %> alert-dismissible fade show">
+            <%= msg %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>
