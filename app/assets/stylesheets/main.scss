@@ -204,22 +204,3 @@
 
   &:hover { color: $green-3; }
 }
-
-// LANDING PAGE
-.landing-page--container {
-  margin-top: $global-margin * 4 !important;
-
-  .landing-page--title {
-    font-size: 30px;
-    margin: 0;
-    font-family: 'Comic Neue';
-  }
-
-  .landing-page--subtitle {
-    font-size: $global-font * 2;
-    color: #8198ae;
-    margin: $global-margin;
-    margin-bottom: $global-margin * 10;
-    font-family: 'Rouge Script', cursive; 
-  }
-}

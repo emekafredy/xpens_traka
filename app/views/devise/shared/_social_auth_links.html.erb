@@ -1,12 +1,12 @@
 <div class="row justify-content-md-center">
   <div class="col-sm-10 col-lg-5">
-    <%= link_to(root_path, class: 'auth--social-auth-link btn') do %>
+    <%= link_to(user_google_oauth2_omniauth_authorize_path, class: 'auth--social-auth-link btn') do %>
       <%= image_icon('google', 'auth--social-auth-icon') %>
       <span> Continue with Google </span>
     <% end %>
   </div>
   <div class="col-sm-10 col-lg-5">
-    <%= link_to(root_path, class: 'auth--social-auth-link btn') do %>
+    <%= link_to(user_facebook_omniauth_authorize_path, class: 'auth--social-auth-link btn') do %>
       <%= image_icon('facebook', 'auth--social-auth-icon') %>
       <span> Continue with Facebook </span>
     <% end %>
