@@ -1,47 +1,38 @@
 class IncomesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
-  # GET /incomes
-  # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = Income.where(user_id: current_user.id).order("created_at DESC")
   end
 
-  # GET /incomes/1
-  # GET /incomes/1.json
   def show
   end
 
-  # GET /incomes/new
   def new
     @income = Income.new
   end
 
-  # GET /incomes/1/edit
   def edit
   end
 
-  # POST /incomes
-  # POST /incomes.json
   def create
-    @income = Income.new(income_params)
+    @income = current_user.incomes.build(permitted_params)
 
     respond_to do |format|
       if @income.save
-        format.html { redirect_to @income, notice: 'Income was successfully created.' }
-        format.json { render :show, status: :created, location: @income }
+        flash[:success] = 'Income was successfully created.'
+        redirect_to incomes_path
       else
-        format.html { render :new }
-        format.json { render json: @income.errors, status: :unprocessable_entity }
+        flash.now[:error] = @income.errors.full_messages
+        render :new
       end
     end
   end
 
-  # PATCH/PUT /incomes/1
-  # PATCH/PUT /incomes/1.json
   def update
     respond_to do |format|
-      if @income.update(income_params)
+      if @income.update(permitted_params)
         format.html { redirect_to @income, notice: 'Income was successfully updated.' }
         format.json { render :show, status: :ok, location: @income }
       else
@@ -51,8 +42,6 @@ class IncomesController < ApplicationController
     end
   end
 
-  # DELETE /incomes/1
-  # DELETE /incomes/1.json
   def destroy
     @income.destroy
     respond_to do |format|
@@ -62,13 +51,11 @@ class IncomesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_income
-      @income = Income.find(params[:id])
+      @income = Income.where(user_id: current_user.id).find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def income_params
-      params.require(:income).permit(:user_id, :category, :date, :amount)
+    def permitted_params
+      params.require(:income).permit(:category, :date, :amount)
     end
 end
