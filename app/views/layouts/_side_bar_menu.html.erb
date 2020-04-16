@@ -16,12 +16,19 @@
 
       <%= link_to(root_path) do %>
         <li class="list-group-item">
+          <%= image_icon('budget', 'side-bar--menu-icon') %> 
+          <span> Monthly Budget </span>
+        </li>
+      <% end %>
+
+      <%= link_to(incomes_path) do %>
+        <li class="list-group-item">
           <%= image_icon('income', 'side-bar--menu-icon') %> 
           <span> Income </span>
         </li>
       <% end %>
 
-      <%= link_to(root_path) do %>
+      <%= link_to(expenses_path) do %>
         <li class="list-group-item">
           <%= image_icon('expenses', 'side-bar--menu-icon') %>
           <span> Expenses </span>
