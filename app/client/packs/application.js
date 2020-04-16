@@ -8,4 +8,7 @@ import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
 import 'jquery-ujs';
 
-console.log('HELLO WORLD!');
+import HomePageComponent from '../components/homepage';
+
+const homePageComponent = new HomePageComponent;
+homePageComponent.init();

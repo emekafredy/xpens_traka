@@ -70,6 +70,8 @@
   color: $gray-1;
 }
 
+.navbar--background-color { background-color: $white !important; }
+
 // SIDE-BAR NAVIGATION
 .side-bar--container {
   background: $green-1;
@@ -124,6 +126,8 @@
       text-decoration: none;
       font-size: $global-font * 1.1;
     }
+
+    .side-bar--active-tab { background-color: $green-2; }
   }
 }
 
