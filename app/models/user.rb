@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :incomes
+  has_many :expenses
 
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|

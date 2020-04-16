@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :expenses
   resources :incomes
   root 'homepage#index'
   # devise_for :users
