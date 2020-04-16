@@ -124,6 +124,8 @@
       text-decoration: none;
       font-size: $global-font * 1.1;
     }
+
+    .side-bar--active-tab { background-color: $green-2; }
   }
 }
 

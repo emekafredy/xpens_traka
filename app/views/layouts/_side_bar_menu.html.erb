@@ -8,49 +8,49 @@
   <div class="side-bar--menu-list-container">
     <ul class="list-group">
       <%= link_to(root_path) do %>
-        <li class="list-group-item"> 
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('dashboard', 'index') %>"> 
           <%= image_icon('dashboard', 'side-bar--menu-icon') %>
           <span> Dashboard </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('budget', 'edit') %>">
           <%= image_icon('budget', 'side-bar--menu-icon') %> 
-          <span> Monthly Budget </span>
+          <span> Budget </span>
         </li>
       <% end %>
 
       <%= link_to(incomes_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('incomes', 'index') %>">
           <%= image_icon('income', 'side-bar--menu-icon') %> 
           <span> Income </span>
         </li>
       <% end %>
 
       <%= link_to(expenses_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('expenses', 'index') %>">
           <%= image_icon('expenses', 'side-bar--menu-icon') %>
           <span> Expenses </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('documents', 'edit') %>">
           <%= image_icon('document', 'side-bar--menu-icon') %>
           <span> Documents </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('reports', 'edit') %>">
           <%= image_icon('report', 'side-bar--menu-icon') %>
           <span> Reports </span>
         </li>
       <% end %>
 
       <%= link_to(root_path) do %>
-        <li class="list-group-item">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('settings', 'edit') %>">
           <%= image_icon('settings', 'side-bar--menu-icon') %>
           <span> Settings </span>
         </li>
