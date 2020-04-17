@@ -1,5 +1,6 @@
-const { environment } = require('@rails/webpacker')
-const webpack = require('webpack')
+/* eslint-disable no-undef */
+const { environment } = require('@rails/webpacker');
+const webpack = require('webpack');
 
 environment.plugins.append(
   'Provide',
@@ -8,6 +9,6 @@ environment.plugins.append(
     jQuery: 'jquery',
     Popper: ['popper.js', 'default']
   })
-)
+);
 
-module.exports = environment
+module.exports = environment;

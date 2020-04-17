@@ -16,7 +16,9 @@
  *= require_self
  *= require shared/mixins
  *= require main
- */
+ *= require pickadate/default
+ *= require pickadate/default.date
+*/
 
  body {
   background-image: url("https://image.ibb.co/de6JzG/bitmap_1_1.png");

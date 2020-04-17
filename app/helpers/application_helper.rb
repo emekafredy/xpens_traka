@@ -7,8 +7,8 @@ module ApplicationHelper
     )
   end
 
-  def active_tab?(controller_class, action)
-    controller.class == tab_names[controller_class] && controller.action_name == action
+  def active_tab?(controller_class, actions)
+    controller.class == tab_names[controller_class] && actions.include?(controller.action_name)
   end
 
   def tab_names
@@ -21,5 +21,22 @@ module ApplicationHelper
       'reports'   => HomepageController,
       'settings'  => HomepageController,
     }
+  end
+
+  def merge_classes(defaults = '', options = '')
+    "#{defaults} #{options}".strip
+  end
+
+  def modal(options: {}, html_options: {}, &block)
+    html_options[:class] = merge_classes('modal', html_options[:class])
+
+    content = capture(&block) if block_given?
+
+    content_tag(:div, html_options) do
+      render partial: 'components/modal', locals: {
+        content: content,
+        modal_title: options[:modal_title]
+      }
+    end
   end
 end
