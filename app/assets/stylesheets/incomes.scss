@@ -1,9 +1,8 @@
-// Place all the styles related to the Incomes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "shared/colors";
 
 .incomes--new-income-link {
   float: right;
+  background-color: $green-2;
 }
 
 .breadcrumb {

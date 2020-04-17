@@ -19,14 +19,12 @@ class IncomesController < ApplicationController
   def create
     @income = current_user.incomes.build(permitted_params)
 
-    respond_to do |format|
-      if @income.save
-        flash[:success] = 'Income was successfully created.'
-        redirect_to incomes_path
-      else
-        flash.now[:error] = @income.errors.full_messages
-        render :new
-      end
+    if @income.save
+      flash[:success] = 'Income was successfully created.'
+      redirect_to incomes_path
+    else
+      # flash.now[:danger] = @income.errors.full_messages
+      render :new
     end
   end
 

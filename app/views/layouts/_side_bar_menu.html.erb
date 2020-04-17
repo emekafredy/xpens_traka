@@ -22,7 +22,7 @@
       <% end %>
 
       <%= link_to(incomes_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('incomes', 'index') %>">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('incomes', %w[index edit show new]) %>">
           <%= image_icon('income', 'side-bar--menu-icon') %> 
           <span> Income </span>
         </li>

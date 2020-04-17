@@ -19,14 +19,12 @@ class ExpensesController < ApplicationController
   def create
     @expense = current_user.expenses.build(permitted_params)
 
-    respond_to do |format|
-      if @expense.save
-        flash[:success] = 'Expense was successfully created.'
-        redirect_to expenses_path
-      else
-        flash.now[:error] = @expense.errors.full_messages
-        render :new
-      end
+    if @expense.save
+      flash[:success] = 'Expense was successfully created.'
+      redirect_to expenses_path
+    else
+      flash.now[:error] = @expense.errors.full_messages
+      render :new
     end
   end
 
