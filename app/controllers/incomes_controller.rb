@@ -16,14 +16,22 @@ class IncomesController < ApplicationController
   def edit
   end
 
+  def local_image_path(name)
+    Rails.root.join('app/assets/images/icons', name).to_s
+  end
+
   def create
     @income = current_user.incomes.build(permitted_params)
+
+    if params[:income][:image].present?
+      @value = Cloudinary::Uploader.upload(params[:income][:image])
+      @income.image = @value['secure_url']
+    end
 
     if @income.save
       flash[:success] = 'Income was successfully created.'
       redirect_to incomes_path
     else
-      # flash.now[:danger] = @income.errors.full_messages
       render :new
     end
   end
@@ -54,6 +62,6 @@ class IncomesController < ApplicationController
     end
 
     def permitted_params
-      params.require(:income).permit(:category, :date, :amount)
+      params.require(:income).permit(:category, :date, :amount, :image)
     end
 end
