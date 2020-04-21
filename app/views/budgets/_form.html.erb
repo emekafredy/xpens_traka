@@ -1,0 +1,39 @@
+<%= form_with(model: budget, local: true) do |f| %>
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-lg-7 auth--container">
+      <h4 class="auth--text text-center"> <%= form_title %> </h4>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10 col-lg-5 form-group">
+          <%= f.label :from %>
+          <%= f.text_field :from, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:from).first %> </span>
+        </div>
+        <div class="col-sm-10 col-lg-5">
+          <%= f.label :to %>
+          <%= f.text_field :to, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:to).first %> </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+         <div class="col-sm-10 col-lg-5">
+          <%= f.label :income_estimate %>
+          <%= f.text_field :income_estimate, placeholder: '5000', class: "form-control" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:income_estimate).first %> </span>
+        </div>
+        <div class="col-sm-10 col-lg-5">
+          <%= f.label :expense_estimate %>
+          <%= f.text_field :expense_estimate, placeholder: '5000', class: "form-control" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:expense_estimate).first %> </span>
+        </div>
+      </div>
+      
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+          <%= f.submit "Save Changes", 'aria-label': 'Create Budget', class: 'btn auth--button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
