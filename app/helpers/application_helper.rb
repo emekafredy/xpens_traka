@@ -14,7 +14,7 @@ module ApplicationHelper
   def tab_names
     {
       'dashboard' => HomepageController,
-      'budget'    => HomepageController,
+      'budget'    => BudgetsController,
       'incomes'   => IncomesController,
       'expenses'  => ExpensesController,
       'documents' => HomepageController,

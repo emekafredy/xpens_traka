@@ -14,8 +14,8 @@
         </li>
       <% end %>
 
-      <%= link_to(root_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('budget', 'edit') %>">
+      <%= link_to(budgets_path) do %>
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('budget', %w[index edit new]) %>">
           <%= image_icon('budget', 'side-bar--menu-icon') %> 
           <span> Budget </span>
         </li>
