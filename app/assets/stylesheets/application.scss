@@ -16,6 +16,7 @@
  *= require_self
  *= require shared/mixins
  *= require main
+ *= require components/modal
  *= require pickadate/default
  *= require pickadate/default.date
 */
@@ -25,4 +26,8 @@
   background-size:cover;
   background-repeat:no-repeat;
   background-position: center;
+}
+
+.breadcrumb {
+  background: transparent;
 }

@@ -7,7 +7,7 @@ class Income < ApplicationRecord
   validates :amount, presence: true
   validates :date, presence: true
 
-  INCOME_CATEGORIES = ['salary', 'other'].freeze
+  INCOME_CATEGORIES = %w[salary other].freeze
 
   def self.income_categories
     INCOME_CATEGORIES

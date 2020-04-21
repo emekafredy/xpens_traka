@@ -3,18 +3,16 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   def index
-    @expenses = Expense.where(user_id: current_user.id).order("created_at DESC")
+    @expenses = Expense.where(user_id: current_user.id).order('created_at DESC')
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @expense = Expense.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @expense = current_user.expenses.build(permitted_params)
@@ -49,11 +47,12 @@ class ExpensesController < ApplicationController
   end
 
   private
-    def set_expense
-      @expense = Expense.where(user_id: current_user.id).find(params[:id])
-    end
 
-    def permitted_params
-      params.require(:expense).permit(:user_id, :category, :date, :amount)
-    end
+  def set_expense
+    @expense = Expense.where(user_id: current_user.id).find(params[:id])
+  end
+
+  def permitted_params
+    params.require(:expense).permit(:user_id, :category, :date, :amount)
+  end
 end

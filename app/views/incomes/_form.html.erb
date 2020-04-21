@@ -4,21 +4,13 @@
       <h4 class="auth--text text-center"> <%= form_title %> </h4>
 
       <div class="row justify-content-md-center">
-        <div class="col-sm-10 form-group">
+        <div class="col-sm-10 col-lg-5 form-group">
           <%= f.label :category %>
           <select class="form-control" id='income_category' name="income[category]">
             <option value="salary" <%="selected" if income.category == 'salary' %>> salary </option>
             <option value="others" <%="selected" if income.category == 'others' %>> others </option>
           </select>
           <span class="auth--error-message"> <%= income.errors.full_messages_for(:category).first %> </span>
-        </div>
-      </div>
-
-      <div class="row justify-content-md-center">
-        <div class="col-sm-10 col-lg-5">
-          <%= f.label :date %>
-          <%= f.text_field :date, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
-          <span class="auth--error-message"> <%= income.errors.full_messages_for(:date).first %> </span>
         </div>
         <div class="col-sm-10 col-lg-5">
           <%= f.label :amount %>
@@ -27,6 +19,26 @@
         </div>
       </div>
 
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+          <%= f.label :date %>
+          <%= f.text_field :date, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= income.errors.full_messages_for(:date).first %> </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10 file-input">
+          <%= f.file_field :image, accept: '.jpg, .jpeg, .gif, .png, .svg' %>
+          <span class='button'>Add payslip <em>(optional)</em></span>
+          <% if income.image.present? %>
+            <span class='label' data-js-label> <%= cl_image_tag(income.image, options = { class: 'incomes--image-span' }) %> </span>
+          <% else %>
+            <span class='label' data-js-label>No file selected</span>
+          <% end %>
+        </div>
+      </div>
+      
       <div class="row justify-content-md-center">
         <div class="col-sm-10">
           <%= f.submit "Save Changes", 'aria-label': 'Sign up', class: 'btn auth--button' %>
