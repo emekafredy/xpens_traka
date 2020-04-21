@@ -44,3 +44,20 @@
 .file-input.-chosen > .label {
   opacity: 1;
 }
+
+.modal-pop--trigger,
+.incomes--edit-button {
+  padding: $global-padding * 0.1 ($global-padding * 0.5);
+}
+
+.incomes--actions-field {
+  width: 8%;
+}
+
+.incomes--payslip {
+  width: 100%;
+}
+
+.incomes--image-span {
+  width: $global-padding * 4;
+}

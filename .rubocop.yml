@@ -23,3 +23,27 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Enabled: false
+
+Lint/RaiseException:
+  Enabled: false
+
+Lint/StructNewOverride:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+
+Metrics/MethodLength:
+  Max: 55
+
+Lint/NonDeterministicRequireOrder:
+  Enabled: false

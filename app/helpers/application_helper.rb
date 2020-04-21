@@ -19,7 +19,7 @@ module ApplicationHelper
       'expenses'  => ExpensesController,
       'documents' => HomepageController,
       'reports'   => HomepageController,
-      'settings'  => HomepageController,
+      'settings'  => HomepageController
     }
   end
 
@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def modal(options: {}, html_options: {}, &block)
-    html_options[:class] = merge_classes('modal', html_options[:class])
+    html_options[:class] = merge_classes(html_options[:class])
 
     content = capture(&block) if block_given?
 

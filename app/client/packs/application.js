@@ -17,6 +17,8 @@ import '../vendor/picker.date';
 // Controllers
 import '../controllers/hompage';
 
+import ModalComponent from '../components/modal';
+
 $(document).ready(function() {
   $('.datepicker').pickadate();
 });
@@ -41,3 +43,6 @@ function customInput (el) {
     label.innerText = value;
   };
 }
+
+const modalComponent = new ModalComponent;
+modalComponent.init();

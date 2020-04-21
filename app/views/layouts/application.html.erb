@@ -16,7 +16,7 @@
           <%= render :partial => 'layouts/side_bar_menu' %>
         </div>
       <% end %>
-      <div class="<%= current_user ? 'col-9' : 'col-12' %>">
+      <div class="<%= current_user ? 'col-9' : 'col-12' %> main-app-body">
         <% flash.each do |type, msg| %>
           <div class="alert <%= "alert-#{type}" %> alert-dismissible fade show">
             <%= msg %>
