@@ -1,19 +1,5 @@
----
-development:
-  cloud_name: dgbmeqmyf
-  api_key: '767613739292841'
-  api_secret: M3ohHo1FYekv_8yDlHtg9OvKAK4
-  enhance_image_tag: true
-  static_file_support: false
-production:
-  cloud_name: dgbmeqmyf
-  api_key: '767613739292841'
-  api_secret: M3ohHo1FYekv_8yDlHtg9OvKAK4
-  enhance_image_tag: true
-  static_file_support: true
-test:
-  cloud_name: dgbmeqmyf
-  api_key: '767613739292841'
-  api_secret: M3ohHo1FYekv_8yDlHtg9OvKAK4
-  enhance_image_tag: true
-  static_file_support: false
+cloud_name: ENV['CLOUDINARY_CLOUD_NAME']
+api_key: ENV['CLOUDINARY_API_KEY']
+api_secret: ENV['CLOUDINARY_API_SECRET']
+enhance_image_tag: true
+static_file_support: false
