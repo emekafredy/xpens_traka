@@ -1,32 +1,46 @@
-<%= form_with(model: expense, local: true) do |form| %>
-  <% if expense.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+<%= form_with(model: expense, local: true) do |f| %>
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-lg-7 auth--container">
+      <h4 class="auth--text text-center"> <%= form_title %> </h4>
 
-      <ul>
-        <% expense.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10 col-lg-5 form-group">
+          <%= f.label :category %>
+          <%= f.select :category, Expense.expense_categories, options = {}, html_options = { class: 'form-control' } %>
+          <span class="auth--error-message"> <%= expense.errors.full_messages_for(:category).first %> </span>
+        </div>
+        <div class="col-sm-10 col-lg-5">
+          <%= f.label :amount %>
+          <%= f.text_field :amount, placeholder: '5000', class: "form-control" %>
+          <span class="auth--error-message"> <%= expense.errors.full_messages_for(:amount).first %> </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+          <%= f.label :date %>
+          <%= f.text_field :date, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= expense.errors.full_messages_for(:date).first %> </span>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10 file-input">
+          <%= f.file_field :image, accept: '.jpg, .jpeg, .gif, .png, .svg' %>
+          <span class='button'>Add receipt <em>(optional)</em></span>
+          <% if expense.image.present? %>
+            <span class='label' data-js-label> <%= cl_image_tag(expense.image, options = { class: 'incomes--image-span' }) %> </span>
+          <% else %>
+            <span class='label' data-js-label>No file selected</span>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+          <%= f.submit "Save Changes", 'aria-label': 'Sign up', class: 'btn auth--button' %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.number_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>

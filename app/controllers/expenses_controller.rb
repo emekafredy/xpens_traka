@@ -17,42 +17,53 @@ class ExpensesController < ApplicationController
   def create
     @expense = current_user.expenses.build(permitted_params)
 
+    upload_image(@expense)
+
     if @expense.save
       flash[:success] = 'Expense was successfully created.'
       redirect_to expenses_path
     else
-      flash.now[:error] = @expense.errors.full_messages
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @expense.update(permitted_params)
-        format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
-      else
-        format.html { render :edit }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
+    upload_image
+
+    if @expense.update(permitted_params)
+      flash[:success] = 'Expense was successfully updated.'
+      redirect_to expenses_path
+    else
+      render :edit
     end
   end
 
   def destroy
     @expense.destroy
-    respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    flash[:success] = 'Expense was successfully deleted.'
+    redirect_to expenses_path
   end
 
   private
+
+  def upload_image(expense = '')
+    return unless params[:expense][:image].present?
+
+    @value = Cloudinary::Uploader.upload(params[:expense][:image])
+
+    if expense.present?
+      expense.image = @value['secure_url']
+    else
+      params[:expense][:image] = @value['secure_url']
+    end
+  end
 
   def set_expense
     @expense = Expense.where(user_id: current_user.id).find(params[:id])
   end
 
   def permitted_params
-    params.require(:expense).permit(:user_id, :category, :date, :amount)
+    params.require(:expense).permit(:category, :date, :amount, :image)
   end
 end

@@ -22,14 +22,14 @@
       <% end %>
 
       <%= link_to(incomes_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('incomes', %w[index edit show new]) %>">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('incomes', %w[index edit new]) %>">
           <%= image_icon('income', 'side-bar--menu-icon') %> 
           <span> Income </span>
         </li>
       <% end %>
 
       <%= link_to(expenses_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('expenses', 'index') %>">
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('expenses', %w[index edit new]) %>">
           <%= image_icon('expenses', 'side-bar--menu-icon') %>
           <span> Expenses </span>
         </li>
