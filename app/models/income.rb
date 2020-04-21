@@ -1,5 +1,5 @@
 class Income < ApplicationRecord
-  enum category: [:salary, :others]
+  enum category: [:Salary, :Others]
 
   belongs_to :user
 
@@ -7,7 +7,7 @@ class Income < ApplicationRecord
   validates :amount, presence: true
   validates :date, presence: true
 
-  INCOME_CATEGORIES = %w[salary other].freeze
+  INCOME_CATEGORIES = %w[Salary Others].freeze
 
   def self.income_categories
     INCOME_CATEGORIES

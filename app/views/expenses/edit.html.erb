@@ -1,6 +1,22 @@
-<h1>Editing Expense</h1>
+<div class="income-section">
+  <div class="row">
+    <div class="col col-md-9">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"> <%= link_to 'Home', root_path  %> </li>
+          <li class="breadcrumb-item"> <%= link_to 'Expenses', expenses_path  %> </li>
+          <li class="breadcrumb-item"> <%= link_to "Expense - #{@expense.id}", @expense  %> </li>
+          <li class="breadcrumb-item active" aria-current="edit expense page">Edit</li>
+        </ol>
+      </nav>
+    </div>
 
-<%= render 'form', expense: @expense %>
+    <div class="col col-md-3">
+      <%= link_to(expenses_path, class: 'incomes--new-income-link btn btn-success') do %>
+        <i class="fa fa-arrow-left"></i> Back
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Show', @expense %> |
-<%= link_to 'Back', expenses_path %>
+  <%= render 'form', expense: @expense, form_title: 'Edit Expense' %>
+</div>

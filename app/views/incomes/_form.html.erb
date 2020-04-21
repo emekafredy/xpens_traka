@@ -6,10 +6,7 @@
       <div class="row justify-content-md-center">
         <div class="col-sm-10 col-lg-5 form-group">
           <%= f.label :category %>
-          <select class="form-control" id='income_category' name="income[category]">
-            <option value="salary" <%="selected" if income.category == 'salary' %>> salary </option>
-            <option value="others" <%="selected" if income.category == 'others' %>> others </option>
-          </select>
+          <%= f.select :category, Income.income_categories, options = {}, html_options = { class: 'form-control' } %>
           <span class="auth--error-message"> <%= income.errors.full_messages_for(:category).first %> </span>
         </div>
         <div class="col-sm-10 col-lg-5">

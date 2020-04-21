@@ -14,17 +14,10 @@ class IncomesController < ApplicationController
 
   def edit; end
 
-  def local_image_path(name)
-    Rails.root.join('app/assets/images/icons', name).to_s
-  end
-
   def create
     @income = current_user.incomes.build(permitted_params)
 
-    if params[:income][:image].present?
-      @value = Cloudinary::Uploader.upload(params[:income][:image])
-      @income.image = @value['secure_url']
-    end
+    upload_image(@income)
 
     if @income.save
       flash[:success] = 'Income was successfully created.'
@@ -35,6 +28,8 @@ class IncomesController < ApplicationController
   end
 
   def update
+    upload_image
+
     if @income.update(permitted_params)
       flash[:success] = 'Income was successfully updated.'
       redirect_to incomes_path
@@ -45,13 +40,23 @@ class IncomesController < ApplicationController
 
   def destroy
     @income.destroy
-    respond_to do |format|
-      format.html { redirect_to incomes_url, notice: 'Income was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    flash[:success] = 'Income was successfully deleted.'
+    redirect_to incomes_path
   end
 
   private
+
+  def upload_image(income = '')
+    return unless params[:income][:image].present?
+
+    @value = Cloudinary::Uploader.upload(params[:income][:image])
+    if income.present?
+      income.image = @value['secure_url']
+    else
+      params[:income][:image] = @value['secure_url']
+    end
+  end
 
   def set_income
     @income = Income.where(user_id: current_user.id).find(params[:id])
