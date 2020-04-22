@@ -5,26 +5,26 @@
 
       <div class="row justify-content-md-center">
         <div class="col-sm-10 col-lg-5 form-group">
-          <%= f.label :from %>
-          <%= f.text_field :from, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
-          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:from).first %> </span>
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:start_date).first %> </span>
         </div>
         <div class="col-sm-10 col-lg-5">
-          <%= f.label :to %>
-          <%= f.text_field :to, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
-          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:to).first %> </span>
+          <%= f.label :end_date %>
+          <%= f.text_field :end_date, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+          <span class="auth--error-message"> <%= budget.errors.full_messages_for(:end_date).first %> </span>
         </div>
       </div>
 
       <div class="row justify-content-md-center">
          <div class="col-sm-10 col-lg-5">
           <%= f.label :income_estimate %>
-          <%= f.text_field :income_estimate, placeholder: '5000', class: "form-control" %>
+          <%= f.number_field :income_estimate, placeholder: '5000', class: "form-control" %>
           <span class="auth--error-message"> <%= budget.errors.full_messages_for(:income_estimate).first %> </span>
         </div>
         <div class="col-sm-10 col-lg-5">
           <%= f.label :expense_estimate %>
-          <%= f.text_field :expense_estimate, placeholder: '5000', class: "form-control" %>
+          <%= f.number_field :expense_estimate, placeholder: '5000', class: "form-control" %>
           <span class="auth--error-message"> <%= budget.errors.full_messages_for(:expense_estimate).first %> </span>
         </div>
       </div>

@@ -14,7 +14,7 @@
 </div>
 
 <table class="table table-bordered">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th scope="col">Category</th>
       <th scope="col">Amount</th>
@@ -28,7 +28,7 @@
     <% @incomes.each do |income| %>
       <tr>
         <td><%= income.category %></td>
-        <td> <span> &#8358; </span> <%= income.amount %></td>
+        <td><%= in_currency(income.amount) %></td>
         <td><%= income.date.strftime("%e %B, %Y") %></td>
         <td class="incomes--actions-field">
           <% if income.image.present? %>

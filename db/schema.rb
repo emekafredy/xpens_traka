@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2020_04_21_160237) do
   enable_extension "plpgsql"
 
   create_table "budgets", force: :cascade do |t|
-    t.date "from"
-    t.date "to"
-    t.float "income_estimate"
-    t.float "expense_estimate"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "income_estimate", precision: 16, scale: 2
+    t.decimal "expense_estimate", precision: 16, scale: 2
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_160237) do
     t.bigint "user_id", null: false
     t.integer "category"
     t.date "date"
-    t.float "amount"
+    t.decimal "amount", precision: 16, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_160237) do
     t.bigint "user_id", null: false
     t.integer "category"
     t.date "date"
-    t.float "amount"
+    t.decimal "amount", precision: 16, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"

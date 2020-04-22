@@ -3,7 +3,7 @@ class IncomesController < ApplicationController
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   def index
-    @incomes = Income.where(user_id: current_user.id).order('created_at DESC')
+    @incomes = Income.where(user_id: current_user.id).order('date DESC')
   end
 
   def show; end

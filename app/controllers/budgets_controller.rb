@@ -3,7 +3,7 @@ class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @budgets = Budget.where(user_id: current_user.id).order('created_at DESC')
+    @budgets = Budget.where(user_id: current_user.id).order('start_date DESC')
   end
 
   def show; end
@@ -49,6 +49,6 @@ class BudgetsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:budget).permit(:from, :to, :income_estimate, :expense_estimate)
+    params.require(:budget).permit(:start_date, :end_date, :income_estimate, :expense_estimate)
   end
 end
