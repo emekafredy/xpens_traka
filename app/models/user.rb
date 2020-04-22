@@ -25,8 +25,8 @@ class User < ApplicationRecord
   end
 
   private
- 
+
   def generate_random_id
-    self.id = SecureRandom.random_number(100000000)
-  end 
+    self.id = SecureRandom.random_number(100_000_000)
+  end
 end

@@ -7,7 +7,7 @@ class Income < ApplicationRecord
 
   validates_presence_of :category, :amount, :date
 
-  scope :created_between, lambda { |start_date, end_date, user| where(user_id: user.id, date: start_date.beginning_of_day..end_date.end_of_day) }
+  scope :created_between, ->(start_date, end_date, user) { where(user_id: user.id, date: start_date.beginning_of_day..end_date.end_of_day) }
 
   INCOME_CATEGORIES = %w[Salary Others].freeze
 
@@ -16,8 +16,8 @@ class Income < ApplicationRecord
   end
 
   private
- 
+
   def generate_random_id
-    self.id = SecureRandom.random_number(100000000)
-  end 
+    self.id = SecureRandom.random_number(100_000_000)
+  end
 end

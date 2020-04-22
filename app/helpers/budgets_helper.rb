@@ -10,20 +10,19 @@ module BudgetsHelper
   end
 
   def savings_rate(budget)
-    return if actual_income(budget) == 0
-  
+    return if actual_income(budget).zero?
+
     difference = actual_income(budget) - actual_expense(budget)
     number_to_percentage((difference / actual_income(budget)) * 100, precision: 1)
   end
 
   def budget_status(budget)
-    case
-    when budget.start_date > Date.today
-      return 'Open'
-    when budget.end_date < Date.today
-      return 'Closed'
-    when (budget.start_date..budget.start_date).cover?(Date.today)
-      return 'In-progress'
+    if budget.start_date > Date.today
+      'Open'
+    elsif budget.end_date < Date.today
+      'Closed'
+    elsif (budget.start_date..budget.start_date).cover?(Date.today)
+      'In-progress'
     end
   end
 
@@ -32,15 +31,14 @@ module BudgetsHelper
   end
 
   def budget_state(budget)
-    case
-    when budget_status(budget) == 'Open' && savings_rate(budget).to_f == 100
-      return 'Not started'
-    when savings_rate(budget).to_f >= 0
-      return 'Surplus'
-    when savings_rate(budget).to_f == 0
-      return 'Balanced'
-    when savings_rate(budget).to_f < 0
-      return 'Deficit'
+    if budget_status(budget) == 'Open' && savings_rate(budget).to_f == 100
+      'Not started'
+    elsif savings_rate(budget).to_f >= 0
+      'Surplus'
+    elsif savings_rate(budget).to_f.zero?
+      'Balanced'
+    elsif savings_rate(budget).to_f.negative?
+      'Deficit'
     end
   end
 
