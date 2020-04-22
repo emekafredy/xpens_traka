@@ -29,8 +29,8 @@
       <tr>
         <td><%= budget.start_date.strftime("%e %B, %Y") %></td>
         <td><%= budget.end_date.strftime("%e %B, %Y") %></td>
-        <td> <span> &#8358; </span> <%= budget.income_estimate %></td>
-        <td><span> &#8358; </span> <%= budget.expense_estimate %></td>
+        <td><%= in_currency(budget.income_estimate) %></td>
+        <td><%= in_currency(budget.expense_estimate) %></td>
         <td class="incomes--actions-field">
           <%= link_to(budget, class: "modal-pop--trigger", remote: true) do %>
             <%= image_icon('view', 'side-bar--menu-icon') %>

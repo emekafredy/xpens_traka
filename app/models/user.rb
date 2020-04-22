@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :generate_random_id
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,4 +23,10 @@ class User < ApplicationRecord
       user.save
     end
   end
+
+  private
+ 
+  def generate_random_id
+    self.id = SecureRandom.random_number(100000000)
+  end 
 end

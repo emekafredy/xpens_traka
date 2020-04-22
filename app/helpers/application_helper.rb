@@ -39,4 +39,8 @@ module ApplicationHelper
       }
     end
   end
+
+  def in_currency(value)
+    number_to_currency(value, unit: 'NGN')
+  end
 end

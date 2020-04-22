@@ -1,4 +1,6 @@
 class Expense < ApplicationRecord
+  before_create :generate_random_id
+
   enum category: [:Utility, :Food, :Travel, :Shopping, :Vacation, :Airtime, :Data, :Rent, :Others]
 
   belongs_to :user
@@ -22,4 +24,10 @@ class Expense < ApplicationRecord
   def self.expense_categories
     EXPENSE_CATEGORIES
   end
+
+  private
+ 
+  def generate_random_id
+    self.id = SecureRandom.random_number(100000000)
+  end 
 end

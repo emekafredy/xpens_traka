@@ -1,4 +1,6 @@
 class Income < ApplicationRecord
+  before_create :generate_random_id
+
   enum category: [:Salary, :Others]
 
   belongs_to :user
@@ -12,4 +14,10 @@ class Income < ApplicationRecord
   def self.income_categories
     INCOME_CATEGORIES
   end
+
+  private
+ 
+  def generate_random_id
+    self.id = SecureRandom.random_number(100000000)
+  end 
 end

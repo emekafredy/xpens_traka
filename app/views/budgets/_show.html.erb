@@ -14,32 +14,31 @@
     <div class="row justify-content-md-center">
       <div class="col-sm-10 col-lg-5 form-group">
         <%= label_tag :income_estimate, 'Estimated Income', class: 'budget--show--labels' %>
-        <span class="budget--show--amounts"> <%= "NGN#{budget.income_estimate}" %> </span>
+        <span class="budget--show--amounts"> <%= in_currency(budget.income_estimate) %> </span>
       </div>
       <div class="col-sm-10 col-lg-5">
         <%= label_tag :expense_estimate, 'Estimated Expenses', class: 'budget--show--labels' %>
-        <span class="budget--show--amounts">  <%= "NGN#{budget.expense_estimate}" %> </span>
+        <span class="budget--show--amounts">  <%= in_currency(budget.expense_estimate) %> </span>
       </div>
     </div>
 
     <div class="row justify-content-md-center">
       <div class="col-sm-10 col-lg-5 form-group">
         <%= label_tag :nil, 'Actual Income', class: 'budget--show--labels' %>
-        <span class="budget--show--amounts"> <%= "NGN" %><%= actual_income(budget) %> </span>
+        <span class="budget--show--amounts"> <%= in_currency(actual_income(budget)) %> </span>
         <hr>
       </div>
       <div class="col-sm-10 col-lg-5">
-        <%= label_tag :nil, 'Expenses so far', class: 'budget--show--labels' %>
-        <span class="budget--show--amounts"> <%= "NGN" %><%= actual_expense(budget) %> </span>
+        <%= label_tag :nil, "#{actual_income_label_title(budget)}", class: 'budget--show--labels' %>
+        <span class="budget--show--amounts"> <%= in_currency(actual_expense(budget)) %> </span>
         <hr>
       </div>
     </div>
 
     <div class="row justify-content-md-center">
       <div class="col-sm-10 col-lg-5">
-        <!-- TO DO: decide on how to represent budget states -->
         <%= label_tag :nil, 'Budget State:', class: 'budget--show--budget-state-label' %>
-        <span class="budget--show--stats"> <%= 'Okay' %> </span>
+        <span class="budget--show--stats"> <%= budget_state(budget) %> </span>
       </div>
       <div class="col-sm-10 col-lg-5">
         <%= label_tag :nil, 'Savings rate:', class: 'budget--show--budget-state-label' %>
