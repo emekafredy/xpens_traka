@@ -1,3 +1,27 @@
-// Place all the styles related to the Budgets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "shared/variables";
+@import "shared/colors";
+
+.budget--show--labels {
+  color: $gray-1;
+  display: block;
+  margin-bottom: $global-margin * -1;
+}
+
+.budget--show--budget-state-label { color: $gray-1; }
+
+.budget--show--dates,
+.budget--show--stats {
+  font-weight: bold;
+}
+
+.budget--show--amounts {
+  font-size: $global-font;
+}
+
+.budget--show--stats--green {
+  color: $green-1;
+}
+
+.budget--show--stats--red {
+  color: $red-1;
+}

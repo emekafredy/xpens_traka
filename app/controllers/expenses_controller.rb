@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   def index
-    @expenses = Expense.where(user_id: current_user.id).order('created_at DESC')
+    @expenses = Expense.where(user_id: current_user.id).order('date DESC')
   end
 
   def show; end

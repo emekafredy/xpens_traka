@@ -4,7 +4,7 @@ class CreateIncomes < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.integer :category
       t.date :date
-      t.float :amount
+      t.decimal :amount
 
       t.timestamps
     end

@@ -3,9 +3,9 @@ class Income < ApplicationRecord
 
   belongs_to :user
 
-  validates :category, presence: true
-  validates :amount, presence: true
-  validates :date, presence: true
+  validates_presence_of :category, :amount, :date
+
+  scope :created_between, lambda { |start_date, end_date, user| where(user_id: user.id, date: start_date.beginning_of_day..end_date.end_of_day) }
 
   INCOME_CATEGORIES = %w[Salary Others].freeze
 

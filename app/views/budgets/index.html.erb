@@ -14,10 +14,10 @@
 </div>
 
 <table class="table table-bordered">
-  <thead>
+  <thead class="thead-light">
     <tr>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
+      <th scope="col">Start date</th>
+      <th scope="col">End date</th>
       <th scope="col">Income estimate</th>
       <th scope="col">Expense estimate</th>
       <th colspan="3" class="incomes--actions-field">Actions</th>
@@ -27,20 +27,16 @@
   <tbody>
     <% @budgets.each do |budget| %>
       <tr>
-        <td><%= budget.from.strftime("%e %B, %Y") %></td>
-        <td><%= budget.to.strftime("%e %B, %Y") %></td>
+        <td><%= budget.start_date.strftime("%e %B, %Y") %></td>
+        <td><%= budget.end_date.strftime("%e %B, %Y") %></td>
         <td> <span> &#8358; </span> <%= budget.income_estimate %></td>
         <td><span> &#8358; </span> <%= budget.expense_estimate %></td>
         <td class="incomes--actions-field">
-          <button class="btn modal-pop--trigger">
+          <%= link_to(budget, class: "modal-pop--trigger", remote: true) do %>
             <%= image_icon('view', 'side-bar--menu-icon') %>
-          </button>
-          <%= modal(options: { modal_title: "Delete Budget - #{budget.id}" }, html_options: { class: "modal-display" }) do %>
-            <%= "Are you sure you want to delete Budget for (#{budget.from} - #{budget.to})?" %>
-            <hr>
-            <div class="float-right">
-              <%= link_to 'Delete', budget, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
-            </div>
+          <% end %>
+          <%= modal(options: { modal_title: "Budget - #{budget.id} (#{budget_status(budget)})" }, html_options: { class: "modal-display", id: "exampleModal" }) do %>
+            <%= render 'show', budget: budget, form_title: 'Edit Budget' %>
           <% end %>
         </td>
         <td class="incomes--actions-field">
@@ -53,7 +49,7 @@
             <%= image_icon('delete', 'side-bar--menu-icon') %>
           </button>
           <%= modal(options: { modal_title: "Delete Budget - #{budget.id}" }, html_options: { class: "modal-display" }) do %>
-            <%= "Are you sure you want to delete Budget for (#{budget.from} - #{budget.to})?" %>
+            <%= "Are you sure you want to delete Budget for (#{budget.start_date} - #{budget.end_date})?" %>
             <hr>
             <div class="float-right">
               <%= link_to 'Delete', budget, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
