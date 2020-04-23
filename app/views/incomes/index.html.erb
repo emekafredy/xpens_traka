@@ -36,7 +36,7 @@
               <%= image_icon('view', 'side-bar--menu-icon') %>
             </button>
             <%= modal(options: { modal_title: "Income - #{income.id} (Payslip)" }, html_options: { class: "modal-display" }) do %>
-              <%= cl_image_tag(income.image, options = { class: 'incomes--payslip' }) %>
+              <%= file_viewer(options: { url: income.image } ) %>
             <% end %>
           <% end %>
         </td>
