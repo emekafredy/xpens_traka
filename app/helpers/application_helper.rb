@@ -17,7 +17,7 @@ module ApplicationHelper
       'budget'    => BudgetsController,
       'incomes'   => IncomesController,
       'expenses'  => ExpensesController,
-      'documents' => HomepageController,
+      'documents' => DocumentsController,
       'reports'   => HomepageController,
       'settings'  => HomepageController
     }

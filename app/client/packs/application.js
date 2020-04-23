@@ -18,6 +18,7 @@ import '../vendor/picker.date';
 import '../controllers/hompage';
 
 import ModalComponent from '../components/modal';
+import FormComponent from '../components/form';
 
 $(document).ready(function() {
   $('.datepicker').pickadate();
@@ -46,3 +47,6 @@ function customInput (el) {
 
 const modalComponent = new ModalComponent;
 modalComponent.init();
+
+const formComponent = new FormComponent;
+formComponent.init();
