@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'documents/index'
   resources :budgets
   resources :expenses
   resources :incomes
