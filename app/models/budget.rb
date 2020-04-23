@@ -3,7 +3,7 @@ class Budget < ApplicationRecord
 
   belongs_to :user
 
-  validates_presence_of :start_date, :end_date
+  validates_presence_of :start_date, :end_date, :income_estimate, :expense_estimate
   validates :start_date, :end_date, overlap: { scope: 'user_id', message_content: 'and End date of this budget overlaps with another created budget.' }
 
   validate :date_config

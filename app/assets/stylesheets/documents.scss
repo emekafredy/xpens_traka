@@ -1,0 +1,13 @@
+@import "shared/colors";
+@import "shared/variables";
+
+.documents--upload--file-type-info {
+  font-size: $global-font * 0.7;
+  color: $gray-1;
+  margin-top: $global-margin * 0.5;
+  margin-bottom: $global-margin * 2;
+}
+
+.documents--upload--name-div {
+  margin-bottom: $global-margin;
+}

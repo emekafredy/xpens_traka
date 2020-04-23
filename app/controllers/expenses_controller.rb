@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = current_user.expenses.build(permitted_params)
 
-    upload_image(@expense)
+    upload_file(@expense)
 
     if @expense.save
       flash[:success] = 'Expense was successfully created.'
@@ -28,7 +28,7 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    upload_image
+    upload_file
 
     if @expense.update(permitted_params)
       flash[:success] = 'Expense was successfully updated.'
@@ -47,15 +47,15 @@ class ExpensesController < ApplicationController
 
   private
 
-  def upload_image(expense = '')
-    return unless params[:expense][:image].present?
+  def upload_file(expense = '')
+    return unless params[:expense][:file].present?
 
-    @value = Cloudinary::Uploader.upload(params[:expense][:image])
+    @value = Cloudinary::Uploader.upload(params[:expense][:file])
 
     if expense.present?
-      expense.image = @value['secure_url']
+      expense.file = @value['secure_url']
     else
-      params[:expense][:image] = @value['secure_url']
+      params[:expense][:file] = @value['secure_url']
     end
   end
 
@@ -64,6 +64,6 @@ class ExpensesController < ApplicationController
   end
 
   def permitted_params
-    params.require(:expense).permit(:category, :date, :amount, :image)
+    params.require(:expense).permit(:category, :date, :amount, :file)
   end
 end

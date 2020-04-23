@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :incomes
   has_many :expenses
   has_many :budgets
+  has_many :documents
 
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|

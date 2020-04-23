@@ -35,8 +35,8 @@
         </li>
       <% end %>
 
-      <%= link_to(root_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('documents', 'edit') %>">
+      <%= link_to(documents_path) do %>
+        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('documents', 'index') %>">
           <%= image_icon('document', 'side-bar--menu-icon') %>
           <span> Documents </span>
         </li>

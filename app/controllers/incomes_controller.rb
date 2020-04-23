@@ -17,7 +17,7 @@ class IncomesController < ApplicationController
   def create
     @income = current_user.incomes.build(permitted_params)
 
-    upload_image(@income)
+    upload_file(@income)
 
     if @income.save
       flash[:success] = 'Income was successfully created.'
@@ -28,7 +28,7 @@ class IncomesController < ApplicationController
   end
 
   def update
-    upload_image
+    upload_file
 
     if @income.update(permitted_params)
       flash[:success] = 'Income was successfully updated.'
@@ -47,14 +47,14 @@ class IncomesController < ApplicationController
 
   private
 
-  def upload_image(income = '')
-    return unless params[:income][:image].present?
+  def upload_file(income = '')
+    return unless params[:income][:file].present?
 
-    @value = Cloudinary::Uploader.upload(params[:income][:image])
+    @value = Cloudinary::Uploader.upload(params[:income][:file])
     if income.present?
-      income.image = @value['secure_url']
+      income.file = @value['secure_url']
     else
-      params[:income][:image] = @value['secure_url']
+      params[:income][:file] = @value['secure_url']
     end
   end
 
@@ -63,6 +63,6 @@ class IncomesController < ApplicationController
   end
 
   def permitted_params
-    params.require(:income).permit(:category, :date, :amount, :image)
+    params.require(:income).permit(:category, :date, :amount, :file)
   end
 end

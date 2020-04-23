@@ -1,0 +1,25 @@
+<%= form_with(model: document, remote: true) do |f| %>
+  <div class="documents--upload">
+    <div class="row documents--upload--name-div">
+      <div class="col-sm-10 col-lg-5">
+        <%= f.label 'File Name' %>
+        <%= f.text_field :name, class: "form-control documents--upload--name-input" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10 col-lg-5">
+        <%= f.file_field :file, accept: '.jpg, .jpeg, .gif, .png, .svg, .pdf', class: "documents--upload--file-input" %>
+        <p class="documents--upload--file-type-info"> (<em>Accepted file types: jpg, jpeg, gif, png, svg, pdf</em>) </p>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <%= button_tag(type: 'submit', class: "btn btn-primary documents--upload--submit-btn", disabled: true) do %>
+          <%= image_icon('upload', 'side-bar--menu-icon') %> Upload
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
