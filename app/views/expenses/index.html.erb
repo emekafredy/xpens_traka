@@ -33,12 +33,12 @@
         <td><%= in_currency(expense.amount) %></td>
         <td><%= expense.date.strftime("%e %B, %Y") %></td>
         <td class="incomes--actions-field">
-          <% if expense.image.present? %>
+          <% if expense.file.present? %>
             <button class="btn modal-pop--trigger">
               <%= image_icon('view', 'side-bar--menu-icon') %>
             </button>
             <%= modal(options: { modal_title: "Expense - #{expense.id} (Payslip)" }, html_options: { class: "modal-display" }) do %>
-              <%= cl_image_tag(expense.image, options = { class: 'incomes--payslip' }) %>
+              <%= file_viewer(options: { url: expense.file } ) %>
             <% end %>
           <% end %>
         </td>

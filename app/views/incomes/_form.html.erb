@@ -26,10 +26,10 @@
 
       <div class="row justify-content-md-center">
         <div class="col-sm-10 file-input">
-          <%= f.file_field :image, accept: '.jpg, .jpeg, .gif, .png, .svg, .pdf' %>
+          <%= f.file_field :file, accept: '.jpg, .jpeg, .gif, .png, .svg, .pdf' %>
           <span class='button'>Add payslip <em>(optional)</em></span>
-          <% if income.image.present? %>
-            <span class='label' data-js-label> <%= cl_image_tag(income.image, options = { class: 'incomes--image-span' }) %> </span>
+          <% if income.file.present? %>
+            <span class='label' data-js-label> <%= cl_image_tag(income.file, options = { class: 'incomes--image-span' }) %> </span>
           <% else %>
             <span class='label' data-js-label>No file selected</span>
           <% end %>

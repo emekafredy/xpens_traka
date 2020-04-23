@@ -31,12 +31,12 @@
         <td><%= in_currency(income.amount) %></td>
         <td><%= income.date.strftime("%e %B, %Y") %></td>
         <td class="incomes--actions-field">
-          <% if income.image.present? %>
+          <% if income.file.present? %>
             <button class="btn modal-pop--trigger">
               <%= image_icon('view', 'side-bar--menu-icon') %>
             </button>
             <%= modal(options: { modal_title: "Income - #{income.id} (Payslip)" }, html_options: { class: "modal-display" }) do %>
-              <%= file_viewer(options: { url: income.image } ) %>
+              <%= file_viewer(options: { url: income.file } ) %>
             <% end %>
           <% end %>
         </td>
