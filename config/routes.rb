@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   root 'homepage#index'
 
   get 'documents'  => 'documents#index'
@@ -9,4 +11,7 @@ Rails.application.routes.draw do
   resources :budgets
   resources :expenses
   resources :incomes
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 end
