@@ -1,17 +1,19 @@
 class DocumentsController < ApplicationController
   def index
     @document = Document.new
+
+    @documents = Document.where(user_id: current_user.id)
   end
-  
+
   def create
     @document = current_user.documents.build(permitted_params)
 
     upload_file(@document)
 
-    if @document.save
-      flash[:success] = 'Document was successfully uploaded.'
-      redirect_to documents_path
-    end
+    return unless @document.save
+
+    flash[:success] = 'Document was successfully uploaded.'
+    redirect_to documents_path
   end
 
   private

@@ -21,7 +21,11 @@ module BudgetsHelper
       'Open'
     elsif budget.end_date < Date.today
       'Closed'
-    elsif (budget.start_date..budget.start_date).cover?(Date.today)
+    elsif budget.start_date == Date.today
+      'Starts today'
+    elsif budget.end_date == Date.today
+      'Ends today'
+    else
       'In-progress'
     end
   end

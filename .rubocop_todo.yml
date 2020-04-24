@@ -20,7 +20,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Layout/LineLength:
-  Max: 154
+  Max: 185
 
 # Offense count: 1
 # Cop supports --auto-correct.
