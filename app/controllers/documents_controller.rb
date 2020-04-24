@@ -1,6 +1,8 @@
 class DocumentsController < ApplicationController
   def index
     @document = Document.new
+
+    @documents = Document.where(user_id: current_user.id)
   end
   
   def create

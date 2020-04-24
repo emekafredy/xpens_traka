@@ -1,0 +1,14 @@
+<div class="row text-center">
+  <% documents.each do |document| %>
+    <div class="col col-sm-6 col-md-4 col-lg-2">
+      <%= button_tag(class: "btn documents--file--link modal-pop--trigger") do %>
+        <%= image_icon(file_icon(document), 'side-bar--menu-icon') %>
+        <span class="documents--file--name"> <%= document.name %> </span>
+      <% end %>
+
+      <%= modal(options: { modal_title: "Document - #{document.name}" }, html_options: { class: "modal-display" }) do %>
+        <%= file_viewer(options: { url: document.file } ) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

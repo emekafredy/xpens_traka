@@ -10,11 +10,12 @@ module Components::FileViewerHelper
   def pdf_viewer(url)
     content_tag(:div) do
       content_tag(:iframe, nil, src: "https://docs.google.com/gview?url=#{url}&embedded=true", class: 'pdf--iframe') +
-      content_tag(:a, 'View in full', href: url, target: '_blank')
+      content_tag(:a, 'View & Download', href: url, target: '_blank')
     end
   end
 
   def image_viewer(url)
-    cl_image_tag(url, options = { class: 'incomes--payslip' })
+    cl_image_tag(url, options = { class: 'incomes--payslip' }) +
+    content_tag(:a, 'View & Download', href: url, target: '_blank')
   end
 end
