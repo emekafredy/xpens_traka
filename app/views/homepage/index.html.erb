@@ -1,5 +1,15 @@
 <% if current_user %>
   <div class="row">
+    <div class="col col-md-11 offset-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="Dashboard page"> Dashboard </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-1"></div>
     <div class="col-6">
       <div class="row dashboard--chart-section">
@@ -22,14 +32,12 @@
     <div class="col-4">
       <div class="row dashboard--chart-section">
         <%= pie_chart data_by_year(@expenses).group(:category).sum(:amount),
-          legend: 'bottom', prefix: "$", thousands: ',',
           title: "Expenses by Category (#{Date.today.strftime("%Y")})"
         %>
       </div>
       <hr class="dashboard--chart-divider">
       <div class="row dashboard--chart-section">
         <%= pie_chart data_by_month(@expenses).group(:category).sum(:amount),
-          legend: 'bottom', prefix: "$", thousands: ',',
           title: "Expenses by Category for #{Date.today.strftime("%b, %Y")}"
         %>
       </div>

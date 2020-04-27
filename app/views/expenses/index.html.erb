@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col col-md-9">
+  <div class="col col-md-8 offset-1">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"> <%= link_to 'Home', root_path  %> </li>
@@ -13,51 +13,59 @@
   </div>
 </div>
 
-<table class="table table-bordered">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Category</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Date</th>
-      <th scope="col">Receipt</th>
-      <th colspan="2" class="incomes--actions-field"> Actions </th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col col-md-11 offset-1">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Date</th>
+          <th scope="col">Receipt</th>
+          <th colspan="2" class="incomes--actions-field"> Actions </th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.category %></td>
-        <td><%= in_currency(expense.amount) %></td>
-        <td><%= expense.date.strftime("%e %B, %Y") %></td>
-        <td class="incomes--actions-field">
-          <% if expense.file.present? %>
-            <button class="btn modal-pop--trigger">
-              <%= image_icon('view', 'side-bar--menu-icon') %>
-            </button>
-            <%= modal(options: { modal_title: "Expense - #{expense.id} (Payslip)" }, html_options: { class: "modal-display" }) do %>
-              <%= file_viewer(options: { url: expense.file } ) %>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="incomes--actions-field">
-          <%= link_to(edit_expense_path(expense)) do %>
-            <%= image_icon('edit', 'side-bar--menu-icon') %>
-          <% end %>
-        </td>
-        <td class="incomes--actions-field">
-          <button class="btn modal-pop--trigger">
-            <%= image_icon('delete', 'side-bar--menu-icon') %>
-          </button>
-          <%= modal(options: { modal_title: "Delete Expense - #{expense.id}" }, html_options: { class: "modal-display" }) do %>
-            <%= "Are you sure you want to delete Expense (#{expense.category} - #{expense.id})?" %>
-            <hr>
-            <div class="float-right">
-              <%= link_to 'Delete', expense, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
-            </div>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @expenses.each do |expense| %>
+          <tr>
+            <td><%= expense.category %></td>
+            <td><%= in_currency(expense.amount) %></td>
+            <td><%= expense.date.strftime("%e %B, %Y") %></td>
+            <td class="incomes--actions-field">
+              <% if expense.file.present? %>
+                <button class="btn modal-pop--trigger">
+                  <%= image_icon('view', 'side-bar--menu-icon') %>
+                </button>
+                <%= modal(options: { modal_title: "Expense - #{expense.id} (Payslip)" }, html_options: { class: "modal-display" }) do %>
+                  <%= file_viewer(options: { url: expense.file } ) %>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="incomes--actions-field">
+              <%= link_to(edit_expense_path(expense)) do %>
+                <%= image_icon('edit', 'side-bar--menu-icon') %>
+              <% end %>
+            </td>
+            <td class="incomes--actions-field">
+              <button class="btn modal-pop--trigger">
+                <%= image_icon('delete', 'side-bar--menu-icon') %>
+              </button>
+              <%= modal(options: { modal_title: "Delete Expense - #{expense.id}" }, html_options: { class: "modal-display" }) do %>
+                <%= "Are you sure you want to delete Expense (#{expense.category} - #{expense.id})?" %>
+                <hr>
+                <div class="float-right">
+                  <%= link_to 'Delete', expense, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="digg_pagination text-center">
+      <%= will_paginate @expenses, previous_label: 'Prev', inner_window: 1, outer_window: 0  %>
+    </div>
+  </div>
+</div>

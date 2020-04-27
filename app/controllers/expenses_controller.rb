@@ -2,8 +2,10 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
+  EXPENSES_PER_PAGE = 10
+
   def index
-    @expenses = Expense.where(user_id: current_user.id).order('date DESC')
+    @expenses = Expense.where(user_id: current_user.id).order('date DESC').paginate(page: params[:page], per_page: EXPENSES_PER_PAGE)
   end
 
   def show; end

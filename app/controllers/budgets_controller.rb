@@ -2,8 +2,10 @@ class BudgetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
 
+  BUDGETS_PER_PAGE = 10
+
   def index
-    @budgets = Budget.where(user_id: current_user.id).order('start_date DESC')
+    @budgets = Budget.where(user_id: current_user.id).order('start_date DESC').paginate(page: params[:page], per_page: BUDGETS_PER_PAGE)
   end
 
   def show; end

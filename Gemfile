@@ -21,6 +21,7 @@ gem 'travis'
 gem 'turbolinks', '~> 5'
 gem 'validates_overlap'
 gem 'webpacker', '~> 4.0'
+gem 'will_paginate', '~> 3.3'
 
 group :development, :test do
   gem 'rubocop'

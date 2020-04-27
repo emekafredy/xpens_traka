@@ -5,5 +5,6 @@ Chartkick.options = {
   defer: true,
   decimal: ",",
   precision: 2,
-  download: { background: "#ffffff" }
+  download: { background: "#ffffff" },
+  messages: { empty: "Hi! We have no data yet for chart analysis" }
 }
