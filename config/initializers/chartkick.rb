@@ -1,10 +1,10 @@
 Chartkick.options = {
   legend: 'bottom',
-  prefix: "₦",
+  prefix: '₦',
   thousands: ',',
   defer: true,
-  decimal: ",",
+  decimal: ',',
   precision: 2,
-  download: { background: "#ffffff" },
-  messages: { empty: "Hi! We have no data yet for chart analysis" }
+  download: { background: '#ffffff' },
+  messages: { empty: 'You have no data yet for chart analysis' }
 }
