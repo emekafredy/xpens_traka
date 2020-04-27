@@ -47,3 +47,6 @@ Metrics/MethodLength:
 
 Lint/NonDeterministicRequireOrder:
   Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false

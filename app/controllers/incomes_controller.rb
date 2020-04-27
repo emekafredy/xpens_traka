@@ -2,8 +2,10 @@ class IncomesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
+  INCOMES_PER_PAGE = 10
+
   def index
-    @incomes = Income.where(user_id: current_user.id).order('date DESC')
+    @incomes = Income.where(user_id: current_user.id).order('date DESC').paginate(page: params[:page], per_page: INCOMES_PER_PAGE)
   end
 
   def show; end

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col col-md-9">
+  <div class="col col-md-8 offset-1">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"> <%= link_to 'Home', root_path  %> </li>
@@ -13,50 +13,58 @@
   </div>
 </div>
 
-<table class="table table-bordered">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col">Estimate Income</th>
-      <th scope="col">Estimate Expense</th>
-      <th colspan="3" class="incomes--actions-field">Actions</th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col col-md-11 offset-1">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Estimate Income</th>
+          <th scope="col">Estimate Expense</th>
+          <th colspan="3" class="incomes--actions-field">Actions</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @budgets.each do |budget| %>
-      <tr>
-        <td><%= budget.start_date.strftime("%e %B, %Y") %></td>
-        <td><%= budget.end_date.strftime("%e %B, %Y") %></td>
-        <td><%= in_currency(budget.income_estimate) %></td>
-        <td><%= in_currency(budget.expense_estimate) %></td>
-        <td class="incomes--actions-field">
-          <%= link_to(budget, class: "modal-pop--trigger", remote: true) do %>
-            <%= image_icon('view', 'side-bar--menu-icon') %>
-          <% end %>
-          <%= modal(options: { modal_title: "Budget - #{budget.id} (#{budget_status(budget)})" }, html_options: { class: "modal-display", id: "exampleModal" }) do %>
-            <%= render 'show', budget: budget, form_title: 'Edit Budget' %>
-          <% end %>
-        </td>
-        <td class="incomes--actions-field">
-          <%= link_to(edit_budget_path(budget)) do %>
-            <%= image_icon('edit', 'side-bar--menu-icon') %>
-          <% end %>
-        </td>
-        <td class="incomes--actions-field">
-          <button class="btn modal-pop--trigger">
-            <%= image_icon('delete', 'side-bar--menu-icon') %>
-          </button>
-          <%= modal(options: { modal_title: "Delete Budget - #{budget.id}" }, html_options: { class: "modal-display" }) do %>
-            <%= "Are you sure you want to delete Budget for (#{budget.start_date} - #{budget.end_date})?" %>
-            <hr>
-            <div class="float-right">
-              <%= link_to 'Delete', budget, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
-            </div>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @budgets.each do |budget| %>
+          <tr>
+            <td><%= budget.start_date.strftime("%e %B, %Y") %></td>
+            <td><%= budget.end_date.strftime("%e %B, %Y") %></td>
+            <td><%= in_currency(budget.income_estimate) %></td>
+            <td><%= in_currency(budget.expense_estimate) %></td>
+            <td class="incomes--actions-field">
+              <%= link_to(budget, class: "modal-pop--trigger", remote: true) do %>
+                <%= image_icon('view', 'side-bar--menu-icon') %>
+              <% end %>
+              <%= modal(options: { modal_title: "Budget - #{budget.id} (#{budget_status(budget)})" }, html_options: { class: "modal-display", id: "exampleModal" }) do %>
+                <%= render 'show', budget: budget, form_title: 'Edit Budget' %>
+              <% end %>
+            </td>
+            <td class="incomes--actions-field">
+              <%= link_to(edit_budget_path(budget)) do %>
+                <%= image_icon('edit', 'side-bar--menu-icon') %>
+              <% end %>
+            </td>
+            <td class="incomes--actions-field">
+              <button class="btn modal-pop--trigger">
+                <%= image_icon('delete', 'side-bar--menu-icon') %>
+              </button>
+              <%= modal(options: { modal_title: "Delete Budget - #{budget.id}" }, html_options: { class: "modal-display" }) do %>
+                <%= "Are you sure you want to delete Budget for (#{budget.start_date} - #{budget.end_date})?" %>
+                <hr>
+                <div class="float-right">
+                  <%= link_to 'Delete', budget, method: :delete, class: 'btn btn-danger modal-display--action-button' %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="digg_pagination text-center">
+      <%= will_paginate @budgets, previous_label: 'Prev', inner_window: 1, outer_window: 0  %>
+    </div>
+  </div>
+</div>

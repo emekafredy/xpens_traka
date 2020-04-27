@@ -19,3 +19,6 @@
     font-family: 'Rouge Script', cursive; 
   }
 }
+
+.dashboard--chart-divider { margin: ($global-margin * 3) 0; }
+.dashboard--chart-section { padding: 0 $global-padding * 2; }
