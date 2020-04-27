@@ -29,18 +29,22 @@ class FormComponent {
 
   _attach() {
     let { documentNameInput, documentFileInput } = this.options;
-  
-    documentNameInput.addEventListener('input', this._toggleDocumentUploadButton.bind(this));
-    documentFileInput.addEventListener('change', this._toggleDocumentUploadButton.bind(this));
+    if (documentNameInput) {
+      documentNameInput.addEventListener('input', this._toggleDocumentUploadButton.bind(this));
+      documentFileInput.addEventListener('change', this._toggleDocumentUploadButton.bind(this));
+    }
   }
 
   _setDomDependentOptions() {
     const { classes, selector } = this.options;
 
     this.options.scope = document.querySelector(selector);
-    this.options.documentFileInput = this.options.scope.querySelector(`.${classes.documentFileInput}`);
-    this.options.documentNameInput = this.options.scope.querySelector(`.${classes.documentNameInput}`);
-    this.options.documentsubmitBtn = this.options.scope.querySelector(`.${classes.documentsubmitBtn}`);
+
+    if (this.options.scope) {
+      this.options.documentFileInput = this.options.scope.querySelector(`.${classes.documentFileInput}`);
+      this.options.documentNameInput = this.options.scope.querySelector(`.${classes.documentNameInput}`);
+      this.options.documentsubmitBtn = this.options.scope.querySelector(`.${classes.documentsubmitBtn}`);
+    }
   }
 
   init(options = {}) {

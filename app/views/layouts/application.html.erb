@@ -6,17 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render :partial => 'layouts/navbar' %>
     <div class="row container-fluid">
       <% if current_user %>
-        <div class="col-3">
+        <div class="col-2">
           <%= render :partial => 'layouts/side_bar_menu' %>
         </div>
       <% end %>
-      <div class="<%= current_user ? 'col-9' : 'col-12' %> main-app-body">
+      <div class="<%= current_user ? 'col-10' : 'col-12' %> main-app-body">
         <% flash.each do |type, msg| %>
           <div class="alert <%= "alert-#{type}" %> alert-dismissible fade show">
             <%= msg %>
@@ -29,6 +30,5 @@
         <%= yield %>
       </div>
     </div>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

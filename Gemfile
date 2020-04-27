@@ -4,9 +4,11 @@ ruby '2.6.2'
 
 gem 'activerecord-session_store', '~> 1.0'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'chartkick'
 gem 'cloudinary'
 gem "devise", '>= 4.7.1'
 gem 'foundation-rails', '6.2.3.0'
+gem 'groupdate'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
