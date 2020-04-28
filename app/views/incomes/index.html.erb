@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col col-md-8 offset-1">
+  <div class="col col-md-7 offset-1">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"> <%= link_to 'Home', root_path  %> </li>
@@ -8,8 +8,9 @@
     </nav>
   </div>
 
-  <div class="col col-md-3">
+  <div class="col col-md-4">
     <%= link_to 'New Income', new_income_path, class: 'incomes--new-income-link btn btn-success' %>
+    <%= link_to 'Generate Report', reports_new_incomes_report_path, class: 'incomes--new-income-link btn btn-success' %>
   </div>
 </div>
 

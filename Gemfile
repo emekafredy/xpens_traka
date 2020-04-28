@@ -4,6 +4,8 @@ ruby '2.6.2'
 
 gem 'activerecord-session_store', '~> 1.0'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'caxlsx'
+gem 'caxlsx_rails'
 gem 'chartkick'
 gem 'cloudinary'
 gem "devise", '>= 4.7.1'

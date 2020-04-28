@@ -22,7 +22,12 @@ import FormComponent from '../components/form';
 import HomePageComponent from '../components/homepage';
 
 $(document).ready(function() {
-  $('.datepicker').pickadate();
+  $('.datepicker').pickadate({
+    onStart: function () {
+      var date = new Date();
+      this.set('select', [date.getFullYear(), date.getMonth(), date.getDate()]);
+    }
+  });
 
   var inputs = document.querySelectorAll('.file-input');
 
