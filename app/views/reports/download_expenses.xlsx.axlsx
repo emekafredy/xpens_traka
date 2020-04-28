@@ -1,0 +1,16 @@
+workbook = xlsx_package.workbook
+
+workbook.styles do |s|
+  workbook.add_worksheet(name: 'Expenses') do |sheet|
+    header_border =  s.add_style :border => { :style => :thick, :color =>"2b7a78" }
+    sheet.add_row ["Expense Category", "Amount", "Date Added", "Payslip link", nil], :style=>header_border
+    @expenses.each do |expense|
+      sheet.add_row [expense.category, in_currency(expense.amount), expense.date.strftime("%e %B, %Y"), expense.file, nil]
+    end
+
+    sheet.add_row ["Total", nil, nil, nil, in_currency(@expenses.map(&:amount).reduce(0, :+))], :style=>header_border
+    sheet.column_widths 22, 22, 22, 22, 22
+    sheet.merge_cells sheet.rows.first.cells[(3..4)]
+    sheet.merge_cells sheet.rows.last.cells[(0..3)]
+  end
+end

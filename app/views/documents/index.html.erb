@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"> <%= link_to 'Home', root_path  %> </li>
-        <li class="breadcrumb-item active" aria-current="expenses list page"> Documents </li>
+        <li class="breadcrumb-item active" aria-current="documents list page"> Documents </li>
       </ol>
     </nav>
   </div>
@@ -15,8 +15,6 @@
     <% end %>
   </div>
 </div>
-
-<hr>
 
 <div class="documents">
   <%= render 'documents_folder', documents: @documents %>

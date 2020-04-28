@@ -18,7 +18,6 @@ module ApplicationHelper
       'incomes'   => IncomesController,
       'expenses'  => ExpensesController,
       'documents' => DocumentsController,
-      'reports'   => HomepageController,
       'settings'  => HomepageController
     }
   end
@@ -28,6 +27,6 @@ module ApplicationHelper
   end
 
   def in_currency(value)
-    number_to_currency(value, unit: 'NGN')
+    number_to_currency(value, unit: '₦')
   end
 end

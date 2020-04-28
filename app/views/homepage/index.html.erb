@@ -14,8 +14,8 @@
     <div class="col-6">
       <div class="row dashboard--chart-section">
         <%= column_chart [
-          { name: "Income", data: data_by_year(@incomes).group_by_month(:date, format: "%b, %Y").sum(:amount) },
-          { name: "Expense", data: data_by_year(@expenses).group_by_month(:date, format: "%b, %Y").sum(:amount) }],
+          { name: "Income", data: data_by_year(@incomes).group_by_month(:date, format: "%b").sum(:amount) },
+          { name: "Expense", data: data_by_year(@expenses).group_by_month(:date, format: "%b").sum(:amount) }],
           title: "Income/Expense Chart (#{Date.today.strftime("%Y")})"
         %>
       </div>

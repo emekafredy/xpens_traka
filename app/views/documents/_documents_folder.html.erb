@@ -1,14 +1,24 @@
-<div class="row text-center">
-  <% documents.each do |document| %>
-    <div class="col col-sm-6 col-md-4 col-lg-2">
-      <%= button_tag(class: "btn documents--file--link modal-pop--trigger") do %>
-        <%= image_icon(file_icon(document), 'side-bar--menu-icon') %>
-        <span class="documents--file--name"> <%= document.name %> </span>
-      <% end %>
+<div class="row">
+  <div class="col col-md-11 offset-1">
+    <hr>
+    <% if documents.length.zero? %>
+      <span class="text-center documents--file--name"> You have no saved document </span>
+    <% else %>
+      <div class="row">
+        <% documents.each do |document| %>
+          <div class="col col-sm-6 col-md-4 col-lg-2 documents--column">
+            <%= button_tag(class: "btn documents--file--link modal-pop--trigger") do %>
+              <%= image_icon(file_icon(document), 'side-bar--menu-icon') %>
+              <span class="documents--file--name"> <%= document.name %> </span>
+              <span class="documents--file--name"> <%= document.created_at.strftime("%e %B, %Y") %> </span>
+            <% end %>
 
-      <%= modal(options: { modal_title: "Document - #{document.name}" }, html_options: { class: "modal-display" }) do %>
-        <%= file_viewer(options: { url: document.file } ) %>
-      <% end %>
-    </div>
-  <% end %>
+            <%= modal(options: { modal_title: "Document - #{document.name}" }, html_options: { class: "modal-display" }) do %>
+              <%= file_viewer(options: { url: document.file } ) %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

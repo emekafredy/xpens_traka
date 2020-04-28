@@ -43,13 +43,6 @@
       <% end %>
 
       <%= link_to(root_path) do %>
-        <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('reports', 'edit') %>">
-          <%= image_icon('report', 'side-bar--menu-icon') %>
-          <span> Reports </span>
-        </li>
-      <% end %>
-
-      <%= link_to(root_path) do %>
         <li class="list-group-item <%= 'side-bar--active-tab' if active_tab?('settings', 'edit') %>">
           <%= image_icon('settings', 'side-bar--menu-icon') %>
           <span> Settings </span>

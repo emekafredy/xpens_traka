@@ -1,0 +1,26 @@
+<%= form_tag(download_path, :method => "get") do %>
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-lg-7 auth--container">
+      <h4 class="auth--text text-center"> <%= title %> </h4>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10 col-lg-5 form-group">
+          <%= label_tag :nil, 'From' %>
+          <%= text_field_tag :start_date, nil, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+        </div>
+        <div class="col-sm-10 col-lg-5">
+          <%= label_tag :nil,'To' %>
+          <%= text_field_tag :end_date, nil, placeholder: 'mm/dd/yyyy', class: "form-control datepicker" %>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+          <%= button_tag(type: 'submit', class: "btn auth--button") do %>
+            <%= image_icon('upload', 'side-bar--menu-icon') %> Export
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
