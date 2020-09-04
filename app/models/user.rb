@@ -16,11 +16,11 @@ class User < ApplicationRecord
   has_many :documents
 
   def self.create_from_provider_data(provider_data)
-    where(email: provider_data.info.email).first_or_create do |user|
-      user.email = provider_data.info.email
+    where(email: provider_data[:info][:email]).first_or_create do |user|
+      user.email = provider_data[:info][:email]
       user.password = Devise.friendly_token[0, 20]
-      user.first_name = provider_data.info.first_name || provider_data.info.name.split[0]
-      user.last_name = provider_data.info.last_name || provider_data.info.name.split[1]
+      user.first_name = provider_data[:info][:first_name] || provider_data[:info][:name].split[0]
+      user.last_name = provider_data[:info][:last_name] || provider_data[:info][:name].split[1]
       user.save
     end
   end

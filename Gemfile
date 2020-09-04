@@ -41,9 +41,10 @@ group :test do
   gem 'coveralls'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'simplecov-console'
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
   end
 end
