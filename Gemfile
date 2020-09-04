@@ -41,6 +41,7 @@ group :test do
   gem 'coveralls'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'simplecov-console'
