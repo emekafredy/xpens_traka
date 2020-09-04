@@ -4,7 +4,7 @@ RSpec.describe ExpensesController, type: :controller do
   before(:each) { login_user }
 
   let(:valid_expense_attributes) { { category: :Utility, amount: 3000, date: Time.now } }
-  let(:invalid_expense_attributes) { { category: :Utility, amount: 3000, date: '' } }
+  let(:invalid_expense_attributes) { { category: :Food, amount: 3000, date: '' } }
   
   describe 'GET #index' do
     let!(:expenses) { create_list(:expense, 4, user_id: subject.current_user.id) }
