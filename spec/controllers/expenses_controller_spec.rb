@@ -108,10 +108,8 @@ RSpec.describe ExpensesController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not update expense' do
-        put :update, params: { id: expense.to_param, expense: invalid_expense_attributes }
-        expense.reload
-
-        expect(expense.category).to eql('Utility')
+        expect { put :update, params: { id: expense.to_param, expense: invalid_expense_attributes } }
+          .not_to change { Expense.find(expense.id).category }
       end
 
       it 're-renders #edit' do

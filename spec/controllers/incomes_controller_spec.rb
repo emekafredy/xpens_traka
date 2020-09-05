@@ -109,10 +109,8 @@ RSpec.describe IncomesController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not update income' do
-        put :update, params: { id: income.to_param, income: invalid_income_attributes }
-        income.reload
-
-        expect(income.category).to eql('Salary')
+        expect { put :update, params: { id: income.to_param, income: invalid_income_attributes } }
+          .not_to change { Income.find(income.id).category }
       end
 
       it 're-renders #edit' do
