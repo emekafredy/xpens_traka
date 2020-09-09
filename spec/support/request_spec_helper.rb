@@ -3,9 +3,11 @@ module RequestSpecHelper
     JSON.parse(response.body)
   end
 
-  def stub_omniauth
+  def stub_google_omniauth
     OmniAuth.config.test_mode = true
     auth_value = {
+      provider: "google_oauth2",
+      uid: "123456789",
       info: {
         name: "John Doe",
         email: "john.doe@example.com",

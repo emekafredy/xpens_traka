@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe IncomesController, type: :controller do
   before(:each) { login_user }
 
-  let(:valid_income_attributes) { { category: :Salary, amount: 150000, date: Time.now } }
+  let(:valid_income_attributes) { { category: :Salary, amount: 150000, date: Time.now, file: 'income-receipt.png' } }
   let(:invalid_income_attributes) { { category: :Others, amount: 150000, date: '' } }
+  let(:secure_url) { 'secure-income-receipt.jpg' }
   
   describe 'GET #index' do
     let!(:incomes) { create_list(:income, 3, user_id: subject.current_user.id) }
@@ -48,6 +49,10 @@ RSpec.describe IncomesController, type: :controller do
   end
 
   describe 'POST #create' do
+    before do
+      allow(Cloudinary::Uploader).to receive(:upload).with('income-receipt.png') { secure_url }
+    end
+
     context 'with valid attributes' do
       it 'saves a new income' do
         expect(Income.count).to eq 0

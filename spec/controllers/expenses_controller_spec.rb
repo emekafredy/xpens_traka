@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe ExpensesController, type: :controller do
   before(:each) { login_user }
 
-  let(:valid_expense_attributes) { { category: :Utility, amount: 3000, date: Time.now } }
+  let(:valid_expense_attributes) { { category: :Utility, amount: 3000, date: Time.now, file: 'expense-receipt.jpg' } }
   let(:invalid_expense_attributes) { { category: :Food, amount: 3000, date: '' } }
+  let(:secure_url) { 'secure-expense-receipt.jpg' }
   
   describe 'GET #index' do
     let!(:expenses) { create_list(:expense, 4, user_id: subject.current_user.id) }
@@ -48,6 +49,10 @@ RSpec.describe ExpensesController, type: :controller do
   end
 
   describe 'POST #create' do
+    before do
+      allow(Cloudinary::Uploader).to receive(:upload).with('expense-receipt.jpg') { secure_url }
+    end
+
     context 'with valid attributes' do
       it 'saves a new expense' do
         expect(Expense.count).to eq 0
@@ -75,7 +80,7 @@ RSpec.describe ExpensesController, type: :controller do
         post :create, params: { expense: invalid_expense_attributes }
 
         expect(response).to render_template('new')
-      end 
+      end
     end
   end
 

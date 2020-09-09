@@ -8,7 +8,11 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
     SimpleCov::Formatter::Console
   ]
 )
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter "app/controllers/errors_controller.rb"
+  add_filter "app/controllers/users/omniauth_controller.rb"
+  add_filter "app/controllers/users/registrations_controller.rb"
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
