@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/emekafredy/xpens_traka.svg?branch=master)](https://travis-ci.org/emekafredy/xpens_traka)
+[![Coverage Status](https://coveralls.io/repos/github/emekafredy/xpens_traka/badge.svg?branch=master)](https://coveralls.io/github/emekafredy/xpens_traka?branch=master)
 
 ## Xpense Traka
 Sample project that enables users capture their income and expenditure records within selected intervals.
