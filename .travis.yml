@@ -7,7 +7,10 @@ before_install:
   - gem install bundler
 
 before_script:
-  — bundle exec rake db:create
-
-script:
+  — bundle exec rake db:drop db:create db:migrate
+  
+scripts:
   — bundle exec rspec
+
+after_script:
+  - bundle exec rake coveralls:push
